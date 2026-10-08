@@ -1,0 +1,379 @@
+{
+  "source": {
+    "url": "https://eclatglobal.s3.amazonaws.com/uploads/2025/10/2024_eclat_ESG-Report_en.pdf",
+    "filename": "2024_eclat_ESG-Report_en.pdf",
+    "bytes": 39637351,
+    "pdfPages": 85,
+    "sha256": "11eeb02e9051c77f694ffb268db713b6051524c032d289281bc0bd1365bae833",
+    "reviewedAt": "2026-10-08",
+    "period": "2024-01-01/2024-12-31",
+    "note": "Đọc các chương, bảng và phụ lục được dẫn; đối chiếu ảnh các bảng có chênh lệch. Không tái kiểm chứng dữ liệu vận hành hoặc tổ chức assurance mới."
+  },
+  "metrics": [
+    {
+      "code": "FIN-REV",
+      "label": "Doanh thu hoạt động",
+      "unit": "nghìn NTD",
+      "value2023": 30790462,
+      "value2024": 36828499,
+      "scope": "Tập đoàn, thông tin tài chính hợp nhất",
+      "printedPage": 35,
+      "quality": "Số công bố",
+      "method": "Giữ đơn vị NTD thousand của bảng nguồn",
+      "evidence": "Báo cáo tài chính / sổ cái hợp nhất"
+    },
+    {
+      "code": "FIN-NET",
+      "label": "Lợi nhuận sau thuế",
+      "unit": "nghìn NTD",
+      "value2023": 5176467,
+      "value2024": 6640852,
+      "scope": "Tập đoàn",
+      "printedPage": 35,
+      "quality": "Số công bố",
+      "method": "Không đồng nhất với giá trị kinh tế giữ lại",
+      "evidence": "Báo cáo tài chính"
+    },
+    {
+      "code": "HR-END",
+      "label": "Nhân viên cuối kỳ",
+      "unit": "người",
+      "value2023": 18615,
+      "value2024": 20668,
+      "scope": "Toàn cầu; 31/12/2024",
+      "printedPage": 10,
+      "quality": "Số công bố; xem thêm tr.53",
+      "method": "Headcount cuối kỳ, không cộng tháng",
+      "evidence": "HR tổng hợp theo cơ sở và hợp đồng"
+    },
+    {
+      "code": "HR-TRAIN",
+      "label": "Tổng giờ đào tạo theo thuyết minh",
+      "unit": "giờ",
+      "value2023": null,
+      "value2024": 365369,
+      "scope": "Theo thuyết minh đào tạo Eclat; con số xấp xỉ",
+      "printedPage": 57,
+      "quality": "Cần làm rõ với biểu đồ tr.58",
+      "method": "Giữ số nguồn, chưa lấy làm tổng đã đối chiếu",
+      "evidence": "Nhật ký đào tạo từng khóa, người tham gia, giờ"
+    },
+    {
+      "code": "HR-TURN-TW",
+      "label": "Tỷ lệ nghỉ việc Đài Loan",
+      "unit": "%",
+      "value2023": 14.9,
+      "value2024": 13.92,
+      "scope": "Các cơ sở Đài Loan theo overview",
+      "printedPage": 10,
+      "quality": "Số công bố",
+      "method": "Giữ tỷ lệ nguồn; mẫu số phải xác lập khi áp dụng",
+      "evidence": "HR tuyển/nghỉ và phương pháp mẫu số"
+    },
+    {
+      "code": "HR-FM-TW",
+      "label": "Nữ trong vị trí quản lý Đài Loan",
+      "unit": "%",
+      "value2023": 53.6,
+      "value2024": 57.94,
+      "scope": "Vị trí quản lý tại Đài Loan theo overview",
+      "printedPage": 10,
+      "quality": "Số công bố",
+      "method": "Không áp tỷ lệ này cho nhân viên toàn tập đoàn",
+      "evidence": "Danh sách cấp quản lý theo định nghĩa"
+    },
+    {
+      "code": "OHS-CASES",
+      "label": "Sự kiện chấn thương nơi làm việc",
+      "unit": "sự kiện",
+      "value2023": null,
+      "value2024": 36,
+      "scope": "Theo thuyết minh an toàn Eclat",
+      "printedPage": 82,
+      "quality": "Số công bố",
+      "method": "Không tự suy tỷ suất nếu thiếu giờ làm tương ứng",
+      "evidence": "Sổ tai nạn và điều tra"
+    },
+    {
+      "code": "OHS-DAYS",
+      "label": "Ngày công mất do chấn thương",
+      "unit": "ngày",
+      "value2023": null,
+      "value2024": 431,
+      "scope": "Theo thuyết minh an toàn Eclat",
+      "printedPage": 82,
+      "quality": "Số công bố",
+      "method": "Không dùng như số ca",
+      "evidence": "Theo dõi nghỉ và hồ sơ điều tra"
+    },
+    {
+      "code": "GHG-1",
+      "label": "Scope 1",
+      "unit": "tCO2e",
+      "value2023": 28225.17,
+      "value2024": 31029.99,
+      "scope": "Tập đoàn gồm trụ sở và công ty con hợp nhất",
+      "printedPage": 136,
+      "quality": "Số công bố; cần làm rõ bảng loại khí tr.138",
+      "method": "Giữ bảng kiểm kê; không thay bằng tổng khác ở tr.138",
+      "evidence": "Kiểm kê theo nguồn, hệ số/GWP, xác minh KNK"
+    },
+    {
+      "code": "GHG-2",
+      "label": "Scope 2 theo bảng nguồn",
+      "unit": "tCO2e",
+      "value2023": 90560.75,
+      "value2024": 94968.69,
+      "scope": "Tập đoàn theo bảng kiểm kê",
+      "printedPage": 136,
+      "quality": "Số công bố; chưa có cặp location/market tách đủ",
+      "method": "Không tự gắn kết quả thứ hai; tham khảo hệ số tr.138",
+      "evidence": "Điện/hơi, phương pháp và công cụ hợp đồng nếu áp dụng"
+    },
+    {
+      "code": "GHG-12",
+      "label": "Scope 1 + 2",
+      "unit": "tCO2e",
+      "value2023": 118785.91,
+      "value2024": 125998.68,
+      "scope": "Tập đoàn gồm trụ sở",
+      "printedPage": 136,
+      "quality": "Số công bố",
+      "method": "31.029,99 + 94.968,69 = 125.998,68",
+      "evidence": "Tổng kiểm kê theo ranh giới"
+    },
+    {
+      "code": "GHG-3",
+      "label": "Scope 3 được Eclat kiểm kê",
+      "unit": "tCO2e",
+      "value2023": 9881.73,
+      "value2024": 10535.73,
+      "scope": "Các nguồn/nhóm được Eclat chọn; không suy đủ 15 nhóm",
+      "printedPage": 136,
+      "quality": "Số công bố; xem tr.137,161",
+      "method": "Giữ giới hạn các nhóm và mở rộng vận tải biển năm 2023",
+      "evidence": "Dữ liệu và phương pháp theo từng category"
+    },
+    {
+      "code": "GHG-ALL",
+      "label": "Scope 1 + 2 + 3 trong phạm vi nguồn",
+      "unit": "tCO2e",
+      "value2023": 128667.64,
+      "value2024": 136534.41,
+      "scope": "Tổng trong bảng kiểm kê công bố",
+      "printedPage": 136,
+      "quality": "Số công bố",
+      "method": "125.998,68 + 10.535,73 = 136.534,41",
+      "evidence": "Bảng kiểm kê/xác minh cùng phạm vi"
+    },
+    {
+      "code": "GHG-I-FAB",
+      "label": "Cường độ KNK khối vải",
+      "unit": "tCO2e/tấn sản xuất",
+      "value2023": 4.04,
+      "value2024": 3.89,
+      "scope": "Fabric Division, Scope 1 + 2",
+      "printedPage": 136,
+      "quality": "Số công bố, đã làm tròn",
+      "method": "100.415,67 / 25.783 ≈ 3,89; không dùng sản lượng bán",
+      "evidence": "Sản lượng sản xuất cùng ranh giới kiểm kê"
+    },
+    {
+      "code": "GHG-I-GAR",
+      "label": "Cường độ KNK khối may",
+      "unit": "tCO2e/nghìn tá sản xuất",
+      "value2023": 4.39,
+      "value2024": 3.85,
+      "scope": "Garment Division, Scope 1 + 2",
+      "printedPage": 136,
+      "quality": "Số công bố, đã làm tròn",
+      "method": "23.011,03 / (5.964.852/1.000) ≈ 3,86; giữ 3,85 như nguồn và cần đối chiếu số gốc",
+      "evidence": "Sản lượng/tính cường độ chưa làm tròn"
+    },
+    {
+      "code": "ENERGY-KJ",
+      "label": "Tổng năng lượng",
+      "unit": "kJ",
+      "value2023": 1166745915765,
+      "value2024": 1254171385073,
+      "scope": "Tập đoàn, gồm trụ sở",
+      "printedPage": 140,
+      "quality": "Số công bố; đơn vị chi tiết tr.141",
+      "method": "1.254.171.385.073 kJ / 1.000.000 = 1.254.171,385073 GJ",
+      "evidence": "Đồng hồ/hóa đơn/nhiệt trị, năng lượng mua/tự tạo"
+    },
+    {
+      "code": "SOLAR-TW",
+      "label": "Năng lượng tái tạo dùng ở Đài Loan",
+      "unit": "kWh",
+      "value2023": null,
+      "value2024": 3199244,
+      "scope": "Cơ sở sản xuất Đài Loan, bảng renewable",
+      "printedPage": 140,
+      "quality": "Số công bố",
+      "method": "Giữ bảng theo vùng; không suy tỷ lệ tái tạo toàn cầu",
+      "evidence": "Đo phát điện, điện dùng/bán và chứng từ"
+    },
+    {
+      "code": "SOLAR-VN",
+      "label": "Năng lượng tái tạo dùng ở Việt Nam",
+      "unit": "kWh",
+      "value2023": null,
+      "value2024": 3441958,
+      "scope": "Cơ sở sản xuất Việt Nam, bảng renewable",
+      "printedPage": 140,
+      "quality": "Số công bố",
+      "method": "Tỷ lệ nguồn 5,9%; không coi mọi cơ sở đạt 10%",
+      "evidence": "Đo điện và ranh giới cơ sở"
+    },
+    {
+      "code": "WATER-GROUP",
+      "label": "Tổng nước theo bảng tổng hợp",
+      "unit": "m³",
+      "value2023": 2431033,
+      "value2024": 2685208,
+      "scope": "Tập đoàn; nguồn gọi Total water consumption",
+      "printedPage": 143,
+      "quality": "Cần làm rõ tổng và định nghĩa nước",
+      "method": "Không đồng nhất nước lấy, sử dụng gồm tái dùng và tiêu thụ GRI",
+      "evidence": "Cân bằng nguồn nước, tái dùng, lưu trữ và xả"
+    },
+    {
+      "code": "WATER-DIS",
+      "label": "Tổng nước xả",
+      "unit": "m³",
+      "value2023": null,
+      "value2024": 1750588,
+      "scope": "Các cơ sở trong bảng nước thải",
+      "printedPage": 146,
+      "quality": "Số công bố",
+      "method": "Không trừ khỏi tổng nước tr.143 khi phạm vi/định nghĩa chưa chốt",
+      "evidence": "Đo xả, nơi nhận, chất lượng, phương pháp xử lý"
+    },
+    {
+      "code": "WASTE-TOTAL",
+      "label": "Tổng chất thải",
+      "unit": "kg",
+      "value2023": 14291989,
+      "value2024": 14616916,
+      "scope": "Tập đoàn trong bảng chất thải",
+      "printedPage": 148,
+      "quality": "Số công bố; một dòng khối may có chênh lệch",
+      "method": "14.347.015 không nguy hại + 269.901 nguy hại",
+      "evidence": "Phiếu cân, phân loại và chứng từ xử lý"
+    },
+    {
+      "code": "YARN-R",
+      "label": "Tỷ lệ sợi tái chế mua",
+      "unit": "%",
+      "value2023": 21.14,
+      "value2024": 25.81,
+      "scope": "Sợi mua theo bảng nguồn; không phải mọi vật liệu/sản phẩm",
+      "printedPage": 119,
+      "quality": "Số công bố",
+      "method": "Mua sợi tái chế / tổng mua sợi; lưu ý cập nhật cách tính từ 2023",
+      "evidence": "Sổ mua sợi và hồ sơ GRS theo phạm vi"
+    },
+    {
+      "code": "LOCAL-TW",
+      "label": "Mua nguyên liệu địa phương Đài Loan",
+      "unit": "%",
+      "value2023": 91.97,
+      "value2024": 92.74,
+      "scope": "Các nhà máy được liệt kê tr.118",
+      "printedPage": 118,
+      "quality": "Số công bố",
+      "method": "Không gộp với Việt Nam hoặc tính toàn bộ chuỗi",
+      "evidence": "Chi tiêu và định nghĩa địa phương"
+    },
+    {
+      "code": "LOCAL-VN",
+      "label": "Mua nguyên liệu địa phương Việt Nam",
+      "unit": "%",
+      "value2023": 44.71,
+      "value2024": 33.9,
+      "scope": "Nhà máy vải Việt Nam; loại các cơ sở bị nhãn hàng chỉ định nguồn",
+      "printedPage": 118,
+      "quality": "Số công bố",
+      "method": "Không diễn giải là tỷ lệ mọi cơ sở Việt Nam",
+      "evidence": "Sổ mua, cơ sở được bao gồm/loại trừ"
+    },
+    {
+      "code": "SUP-FEM",
+      "label": "Nhà cung cấp chính cấp 1 có FEM hoặc tương đương",
+      "unit": "%",
+      "value2023": 66.67,
+      "value2024": 69.57,
+      "scope": "Key Tier 1 theo định nghĩa/loại trừ tr.120–121",
+      "printedPage": 120,
+      "quality": "Số công bố",
+      "method": "Không coi là 69,57% tất cả nhà cung cấp hoặc chứng nhận toàn chuỗi",
+      "evidence": "Danh sách mẫu số, đánh giá, tiêu chí tương đương"
+    }
+  ],
+  "issues": [
+    {
+      "code": "SRC-01",
+      "title": "Chất thải khối may không khớp",
+      "pages": [
+        12,
+        148,
+        150
+      ],
+      "finding": "Tr.148 ghi 10.329.559 kg ở dòng khối may 2024. Tr.12 ghi 4.029.218 kg; tr.150 có 4.023.337 + 5.881 = 4.029.218 kg. Không tự sửa số nguồn; giữ bảng chi tiết và báo ngoại lệ.",
+      "action": "Chủ dữ liệu đối chiếu phiếu cân/tổng hợp khối may, xác nhận số gốc và phát hành điều chỉnh nếu cần."
+    },
+    {
+      "code": "SRC-02",
+      "title": "Giờ đào tạo tổng và theo vùng khác nhau",
+      "pages": [
+        57,
+        58
+      ],
+      "finding": "Tr.57 nêu khoảng 365.369 giờ. Biểu đồ tr.58 là 139.444,46 + 238.381 + 9.163 + 8.065,28 = 395.053,74 giờ. Chênh 29.684,74 giờ; cần làm rõ phạm vi/cách tính.",
+      "action": "HR đối chiếu người-lượt tham gia, khóa đào tạo, giờ và kỳ; không chuyển 188.465 lượt thành số nhân viên duy nhất."
+    },
+    {
+      "code": "SRC-03",
+      "title": "Tổng theo loại khí khác Scope 1",
+      "pages": [
+        136,
+        138,
+        161
+      ],
+      "finding": "Tr.136 Scope 1 là 31.029,99 tCO2e; tr.138 bảng theo khí ghi tổng 30.999,99. Tr.161 ghi Scope 1 31.029,9857. Cần giải thích chênh lệch khoảng 30 tCO2e và phạm vi của bảng theo khí.",
+      "action": "EHS đối chiếu nguồn, khí, ranh giới và dữ liệu chưa làm tròn; không chọn số nhỏ hơn để thay tổng."
+    },
+    {
+      "code": "SRC-04",
+      "title": "Nước tổng và cộng cơ sở chưa khớp",
+      "pages": [
+        143,
+        144,
+        167
+      ],
+      "finding": "Tr.143 tổng là 2.685.208 m³, nhưng 34.464 trụ sở + 2.028.198 khối vải + 650.460 khối may = 2.713.122 m³. Chênh 27.914 m³. Khối vải gồm 520.275 m³ tái dùng, nên định nghĩa nước cần kiểm trước khi dùng như nước lấy/tiêu thụ.",
+      "action": "Đối chiếu nguồn nước, tái dùng và phạm vi; không tính water consumption theo phép trừ đơn giản từ hai bảng chưa cùng định nghĩa."
+    },
+    {
+      "code": "SRC-05",
+      "title": "Đơn vị năng lượng ở overview gây nhầm",
+      "pages": [
+        11,
+        140,
+        141
+      ],
+      "finding": "Tr.11 biểu đồ Total Energy Use ghi Unit: ton CO2e. Bảng chi tiết tr.140–141 là kJ. Mẫu dùng số kJ chi tiết, quy đổi GJ được đánh dấu là phép tính.",
+      "action": "Chốt đơn vị trong từ điển KPI và kiểm chéo overview với phụ lục trước phát hành."
+    },
+    {
+      "code": "SRC-06",
+      "title": "Tổng giảm phát thải dự án cần đối chiếu",
+      "pages": [
+        142
+      ],
+      "finding": "8 dòng kết quả dự án tr.142 cộng thành 6.125,96 tCO2e/năm, trong khi dòng Total ghi 4.974,15. Chênh 1.151,81; chưa rõ chồng lấn hoặc lỗi tổng. Không khấu trừ tổng dự án khỏi kiểm kê gross.",
+      "action": "Đối chiếu phạm vi từng dự án, hệ số riêng, khoảng thời gian và loại bỏ đếm trùng với nguồn vận hành."
+    }
+  ]
+}

@@ -2,6 +2,19 @@
 
 Ứng dụng React/TypeScript dành cho doanh nghiệp học ESG, tổ chức công việc, thu thập dữ liệu có bằng chứng và lập báo cáo theo kỳ. Triển khai frontend trên Vercel; Supabase cung cấp đăng nhập, dữ liệu theo doanh nghiệp và phân quyền.
 
+## Audit, báo cáo mẫu và sơ đồ thao tác
+
+Mở trên web sau deployment mới:
+
+- [Audit & Kaizen](https://mitbittubi.vercel.app/#project-audit): phát hiện mã nguồn ZIP, biện pháp cải tiến và các điểm cần làm rõ trong PDF Eclat.
+- [Khung báo cáo ESG](https://mitbittubi.vercel.app/#report-kit): 19 phần, trách nhiệm, bằng chứng, checklist và chỉ mục GRI.
+- [Báo cáo tham chiếu](https://mitbittubi.vercel.app/#report-example): mặc định là mẫu tiếng Việt bám Eclat 2024, 21 phần và 25 KPI có trang nguồn. Nút riêng mở mẫu giả định 20 chương để luyện nhập liệu.
+- [Hướng dẫn & sơ đồ](https://mitbittubi.vercel.app/#guide): mindmap sáu nhóm công việc, lưu trình tám bước, hướng dẫn theo vai trò và đường trả sửa.
+
+Các tài liệu đọc trên web, tải Markdown/HTML, in PDF; KPI mẫu tải Excel và mindmap tải SVG. Số liệu Eclat và giả định chỉ để tham khảo, không được tự nhập vào dữ liệu của doanh nghiệp. Màn Nhật ký thay đổi vẫn ghi thao tác; báo cáo audit có mục menu riêng.
+
+Tài liệu nguồn trong GitHub: [khung](docs/ESG_REPORT_OUTLINE.md), [mẫu Eclat](docs/ESG_REPORT_ECLAT_REFERENCE.md), [sổ trích nguồn](docs/eclat-source-register.json), [mẫu giả định](docs/ESG_REPORT_EXAMPLE.md), [hướng dẫn](docs/WORKFLOW_GUIDE.md). Mẫu bám PDF người dùng cung cấp, giữ phạm vi và các chênh lệch trong báo cáo; không chuyển assurance của Eclat thành xác nhận cho hệ thống hoặc doanh nghiệp khác.
+
 ## Chạy trên máy phát triển
 
 Yêu cầu Node.js 24 và npm. Dùng checkout hiện tại; mỗi tác vụ Codex đã có môi trường riêng, không cần tạo Git worktree.
