@@ -11,7 +11,7 @@ Môi trường hiện tại: Node.js 24.19.0, npm 11.9.0, Python 3.12.14, Git 2.
 | Playwright Chromium | 8 test đạt; toàn bộ màn hình, seed/lưu/export, workspace tách biệt, bằng chứng–duyệt–khóa, mobile/desktop, snapshot báo cáo bất biến sau hiệu chỉnh live data; audit truy cập/tải, mẫu Eclat/giả định, xuất HTML/XLSX/SVG, sơ đồ keyboard/mobile và CSS in |
 | PostgreSQL 17 integration | 110 assertion đạt; migration thật, RPC/RLS, tenant isolation, vai trò, storage policies, transaction rollback, versions, chống tự duyệt, evidence, locks, immutable audit/report, KPI quality gates và coverage tháng/quý |
 | Supabase production | Chưa chạy: người dùng chưa tạo project |
-| Vercel production và auto-deploy | Người dùng đã tạo deployment https://mitbittubi.vercel.app; đã đọc trang live qua HTTPS. Phiên bản bổ sung cần xác minh sau push. |
+| Vercel production và auto-deploy | Đạt cho frontend bổ sung: push commit 9bd806a vào main; trang live trả HTTP 200, entry/report/guide assets trùng byte với build đã kiểm thử. Không kiểm tra Supabase production. |
 | PDF Eclat | Đã tải từ URL công khai do người dùng cung cấp sau khi cấp quyền mạng: 39.637.351 byte, 85 trang PDF; đối chiếu các chương/bảng/phụ lục được dẫn, xem ảnh trang có chênh lệch. Số liệu vận hành và chứng thư SGS riêng chưa tái thẩm tra. |
 
 Các lệnh có thể chạy lại:
@@ -39,3 +39,7 @@ Kết quả trên xác minh mã và môi trường hiện tại. Việc lưu dra
 - PostgreSQL 110 assertion là kết quả phiên bản nền đã chạy trước đó, không chạy lại ở đợt này vì không thay migration/RPC/quyền dữ liệu.
 
 Phần chuẩn bị cloud đã lưu script và allowlist cần thiết vào draft; quyền mạng bổ sung được cấp theo turn đã cho phép đọc nguồn và site. Draft không tự publish hoặc bảo đảm quyền truy cập cho lượt làm việc sau.
+
+## Xác minh Vercel sau push
+
+Đã đối chiếu https://mitbittubi.vercel.app sau push commit tính năng `9bd806a555c4aeabc074a12e40a55c82525dea09`. Trang HTML trả HTTP 200, trỏ đúng entry `index-CDRlAwBb.js`. Các gói entry, `ReportLibrary-MU0HrUYr.js` và `WorkflowGuide-CS5-qOU1.js` trả HTTP 200 và trùng từng byte với build local đã kiểm thử. Điều này xác nhận Vercel phục vụ mã mới; các kiểm thử tương tác đầy đủ chạy trên bản production local tương ứng. Không tuyên bố đã kiểm tra Auth/Storage/Supabase thật hoặc kết quả GitHub Actions qua API.
