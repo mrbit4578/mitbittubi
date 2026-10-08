@@ -1,0 +1,156 @@
+import { expect, test, type Page } from '@playwright/test';
+
+const navigate = async (page: Page, name: string) => {
+  await page.getByRole('navigation', { name: 'Chức năng ESG' }).getByRole('button', { name, exact: true }).click();
+};
+
+test('all ESG screens work without Type host and keep route on refresh', async ({ page }) => {
+  const errors: string[] = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.goto('/');
+  await expect(page.getByRole('heading', { name: 'Tổng quan', exact: true })).toBeVisible();
+  await expect(page.getByText('Khu vực thử nghiệm trên trình duyệt', { exact: true })).toBeVisible();
+  for (const name of ['Hỏi đáp', 'Học hỏi & tìm kiếm', 'Đánh giá sẵn sàng', 'Lộ trình & giao việc', 'Chủ đề trọng yếu', 'Sổ bằng chứng', 'Thu thập dữ liệu', 'Kiểm kê KNK', 'Báo cáo', 'CAPA & yêu cầu', 'Nhật ký thay đổi']) {
+    await navigate(page, name);
+    await expect(page.locator('#main-content .screen h2').first()).toBeVisible();
+    await expect(page.getByText('Không tải được ESG Hub', { exact: true })).toHaveCount(0);
+  }
+  await expect(page).toHaveURL(/#audit$/);
+  await page.reload();
+  await expect(page.getByRole('heading', { name: /Nhật ký thay đổi/ })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+test('seeding is persisted, all entities are exported, and sandbox workspaces are isolated', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Nạp bộ mẫu', exact: true }).click();
+  await expect(page.getByText(/Đã nạp: 24 KPI/)).toBeVisible();
+  await navigate(page, 'Thu thập dữ liệu');
+  await page.getByRole('button', { name: 'Từ điển KPI', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Xuất Excel (24)', exact: true })).toBeVisible();
+  await page.reload();
+  await page.getByRole('button', { name: 'Từ điển KPI', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Xuất Excel (24)', exact: true })).toBeVisible();
+  await navigate(page, 'Tổng quan');
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Sao lưu JSON đầy đủ', exact: true }).click();
+  const artifact = await download;
+  const path = await artifact.path();
+  expect(path).toBeTruthy();
+  const { readFile } = await import('node:fs/promises');
+  const backup = JSON.parse(await readFile(path!, 'utf8'));
+  expect(backup.tables.kpis).toHaveLength(24);
+  for (const table of ['dataRecords', 'knowledge', 'questions', 'evidence', 'reports', 'ghgEntries']) expect(backup.tables).toHaveProperty(table);
+  await page.locator('.workspace-settings > summary').click();
+  await page.getByText('Tạo thêm không gian dùng thử', { exact: true }).click();
+  await page.getByLabel('Tên không gian dùng thử', { exact: true }).fill('Doanh nghiệp thử nghiệm B');
+  await page.getByRole('button', { name: 'Tạo bản dùng thử', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Nạp bộ mẫu', exact: true })).toBeVisible();
+});
+
+test('evidence is linked to a numeric zero measurement, independently reviewed and locked', async ({ page }) => {
+  await page.goto('/');
+  await page.getByRole('button', { name: 'Nạp bộ mẫu', exact: true }).click();
+  await expect(page.getByText(/Đã nạp: 24 KPI/)).toBeVisible();
+  await navigate(page, 'Sổ bằng chứng');
+  await page.getByLabel('Mã bằng chứng *', { exact: true }).fill('EV-ZERO');
+  await page.getByLabel('Tên tài liệu *', { exact: true }).fill('Biên bản đo số 0');
+  await page.getByLabel('Hoặc đường dẫn HTTPS', { exact: true }).fill('https://example.org/evidence-zero');
+  await page.getByRole('button', { name: 'Đăng ký bằng chứng', exact: true }).click();
+  await expect(page.getByText('Đã đăng ký bằng chứng. Dùng mã này khi nhập và duyệt dữ liệu.', { exact: true })).toBeVisible();
+  await navigate(page, 'Thu thập dữ liệu');
+  await page.getByRole('button', { name: '+ Thêm mới', exact: true }).click();
+  const form = page.locator('form').filter({ has: page.getByRole('heading', { name: 'Thêm bản ghi', exact: true }) });
+  await form.getByLabel('Mã cơ sở', { exact: false }).fill('FAC-ZERO');
+  await form.getByLabel('Mã KPI', { exact: false }).selectOption('E01');
+  await form.getByLabel('Nguồn / đồng hồ / lô', { exact: false }).fill('Meter-Zero');
+  await form.getByLabel('Giá trị', { exact: true }).fill('0');
+  await form.getByLabel('Đơn vị', { exact: false }).fill('kWh');
+  await form.getByLabel('Mã bằng chứng', { exact: false }).fill('EV-ZERO');
+  await form.getByRole('button', { name: 'Lưu', exact: true }).click();
+  await expect(form).toHaveCount(0);
+  await page.getByLabel('Ghi chú soát xét E01 Meter-Zero').fill('Đối chiếu biên bản đo');
+  await page.getByRole('button', { name: 'Duyệt', exact: true }).click();
+  await expect(page.getByText(/Đã duyệt bản ghi E01 \/ Meter-Zero/)).toBeVisible();
+  await page.getByLabel('Lý do khóa / mở lại kỳ', { exact: true }).fill('Chốt kỳ sau đối chiếu bằng chứng');
+  await page.getByRole('button', { name: 'Khóa kỳ đã duyệt', exact: true }).click();
+  await expect(page.getByText(/Đã khóa kỳ/)).toBeVisible();
+  const row = page.locator('table').first().getByRole('row').filter({ hasText: 'Meter-Zero' });
+  await expect(row.getByRole('button', { name: /^Sửa bản ghi/ })).toBeDisabled();
+  await expect(row.getByRole('button', { name: /^Xóa bản ghi/ })).toBeDisabled();
+  await page.reload();
+  const persisted = page.locator('table').first().getByRole('row').filter({ hasText: 'Meter-Zero' });
+  await expect(persisted).toContainText('0');
+  await expect(persisted.getByRole('button', { name: /^Sửa bản ghi/ })).toBeDisabled();
+});
+
+test('desktop and mobile screens fit their viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const desktop = await page.locator('.esg-shell').boundingBox();
+  expect(desktop!.width).toBeGreaterThan(1200);
+  await page.setViewportSize({ width: 390, height: 844 });
+  await navigate(page, 'Sổ bằng chứng');
+  const bounds = await page.evaluate(() => ({ viewport: innerWidth, body: document.documentElement.scrollWidth }));
+  expect(bounds.body).toBeLessThanOrEqual(bounds.viewport + 1);
+  await expect(page.getByRole('button', { name: 'Đăng ký bằng chứng', exact: true })).toBeVisible();
+});
+
+test('approved reports keep their snapshot when live data is corrected', async ({ page }) => {
+  await page.goto('/');
+  await navigate(page, 'Thu thập dữ liệu');
+  await page.getByRole('button', { name: 'Từ điển KPI', exact: true }).click();
+  await page.getByRole('button', { name: '+ Thêm mới', exact: true }).click();
+  let form = page.locator('form').filter({ has: page.getByRole('heading', { name: 'Thêm bản ghi', exact: true }) });
+  await form.locator('#f-code').fill('CUSTOM');
+  await form.locator('#f-name').fill('Điện được đối chiếu');
+  await form.locator('#f-unit').fill('kWh');
+  await form.getByRole('button', { name: 'Lưu', exact: true }).click();
+  await expect(form).toHaveCount(0);
+  await navigate(page, 'Sổ bằng chứng');
+  await page.getByLabel('Mã bằng chứng *', { exact: true }).fill('EV-SNAPSHOT');
+  await page.getByLabel('Tên tài liệu *', { exact: true }).fill('Hóa đơn thử nghiệm');
+  await page.getByLabel('Hoặc đường dẫn HTTPS', { exact: true }).fill('https://example.org/invoice');
+  await page.getByRole('button', { name: 'Đăng ký bằng chứng', exact: true }).click();
+  await expect(page.getByText(/Đã đăng ký bằng chứng/)).toBeVisible();
+  await navigate(page, 'Thu thập dữ liệu');
+  await page.getByRole('button', { name: '+ Thêm mới', exact: true }).click();
+  form = page.locator('form').filter({ has: page.getByRole('heading', { name: 'Thêm bản ghi', exact: true }) });
+  await form.locator('#f-facility').fill('FACTORY');
+  await form.locator('#f-source').fill('Invoice-Meter');
+  await form.locator('#f-value').fill('100');
+  await form.locator('#f-unit').fill('kWh');
+  await form.locator('#f-evidenceCode').fill('EV-SNAPSHOT');
+  await form.getByRole('button', { name: 'Lưu', exact: true }).click();
+  await expect(form).toHaveCount(0);
+  await page.getByLabel('Ghi chú soát xét CUSTOM Invoice-Meter').fill('Đối chiếu hóa đơn');
+  await page.getByRole('button', { name: 'Duyệt', exact: true }).click();
+  await expect(page.getByText(/Đã duyệt bản ghi CUSTOM/)).toBeVisible();
+  await page.getByLabel('Lý do khóa / mở lại kỳ', { exact: true }).fill('Chốt số liệu');
+  await page.getByRole('button', { name: 'Khóa kỳ đã duyệt', exact: true }).click();
+  await expect(page.getByText(/Đã khóa kỳ/)).toBeVisible();
+  await navigate(page, 'Báo cáo');
+  await page.getByRole('button', { name: '+ Thêm mới', exact: true }).click();
+  form = page.locator('form').filter({ has: page.getByRole('heading', { name: 'Thêm bản ghi', exact: true }) });
+  await form.locator('#f-code').fill('REPORT-SNAPSHOT');
+  await form.locator('#f-title').fill('Báo cáo kỳ thử nghiệm');
+  await form.getByRole('button', { name: 'Lưu', exact: true }).click();
+  await expect(form).toHaveCount(0);
+  await page.getByRole('button', { name: 'Duyệt & chốt báo cáo', exact: true }).click();
+  await expect(page.locator('.snapshot-note')).toContainText('REPORT-SNAPSHOT');
+  await page.getByRole('button', { name: 'Phát hành bản đã duyệt', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Phát hành bản đã duyệt', exact: true })).toHaveCount(0);
+  await navigate(page, 'Thu thập dữ liệu');
+  await page.getByLabel('Lý do khóa / mở lại kỳ', { exact: true }).fill('Hiệu chỉnh hóa đơn');
+  await page.getByRole('button', { name: 'Mở lại kỳ', exact: true }).click();
+  await expect(page.getByText(/Đã mở lại kỳ/)).toBeVisible();
+  await page.getByRole('button', { name: /^Sửa bản ghi/ }).click();
+  form = page.locator('form').filter({ has: page.getByRole('heading', { name: 'Cập nhật bản ghi', exact: true }) });
+  await form.locator('#f-value').fill('200');
+  await form.getByRole('button', { name: 'Lưu', exact: true }).click();
+  await expect(form).toHaveCount(0);
+  await navigate(page, 'Báo cáo');
+  const row = page.locator('.report-document tbody tr').filter({ hasText: 'CUSTOM' });
+  await expect(row.locator('td').nth(2)).toHaveText('100');
+  await expect(page.locator('.snapshot-note')).toContainText('REPORT-SNAPSHOT');
+});
